@@ -134,6 +134,8 @@ function Picker({
     flatListProps = {},
     scrollViewProps = {},
     searchTextInputProps = {},
+    searchInputAutoFocus = false,
+    searchInputAutoFocusDelay = 500,
     loading = false,
     min = null,
     max = null,
@@ -1591,11 +1593,25 @@ function Picker({
      * The search component.
      * @returns {JSX.Element}
      */
+
+
+     const searchInput = useRef();
+
+     useEffect(() => {
+        if(searchInput && searchInputAutoFocus)
+        {
+            setTimeout(() => {
+                searchInput.current?.focus();
+            }, searchInputAutoFocusDelay);
+        }
+      });
+
     const SearchComponent = useMemo(() => isSearchComponentVisible && (
         <View style={_searchContainerStyle}>
             {
                 searchable ? (
                     <TextInput
+                        ref={searchInput}
                         value={searchText}
                         onChangeText={_onChangeSearchText}
                         style={_searchTextInputStyle}

@@ -242,6 +242,8 @@ declare module 'react-native-dropdown-picker' {
     flatListProps?: Partial<FlatListProps<ItemType<T>>>;
     scrollViewProps?: ScrollViewProps;
     searchTextInputProps?: TextInputProps;
+    searchInputAutofocus?:boolean;
+    searchInputAutoFocusDelay?: number;
     modalTitle?: string;
     modalTitleStyle?: StyleProp<TextStyle>;
     loading?: boolean;
